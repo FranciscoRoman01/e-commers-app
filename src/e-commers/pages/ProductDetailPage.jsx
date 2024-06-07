@@ -1,9 +1,18 @@
 import { useParams } from "react-router";
 import { useGetProductId } from "../../services/useGetProductId";
+import { Loading } from "../../ui/components/Loading";
 
 export function ProductDetailPage() {
   const { id } = useParams();
-  const { productId } = useGetProductId(id);
+  const { productId, loading } = useGetProductId(id);
+
+  if (loading) {
+    return (
+        <div className="w-screen h-screen flex flex-col justify-center"> 
+            <Loading />
+        </div>
+    )
+  }
 
   return (
     <div className="container mx-auto p-4 flex flex-col md:flex-row justify-center items-center gap-4">
