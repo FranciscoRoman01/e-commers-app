@@ -9,7 +9,6 @@ import '../../../style.css';
 import { SlideCard } from './SlideCard';
 
 export function SliderContainer ({ categories }) {
-    console.log(categories);
     return (
         <Swiper
             breakpoints={{
