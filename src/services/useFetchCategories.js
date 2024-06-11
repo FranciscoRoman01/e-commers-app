@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const API_CATEGORIES_URL = "https://api.escuelajs.co/api/v1/categories";
+const API_CATEGORIES_URL = "https://fakestoreapi.com/products/categories";
 
-export function useFetchCategories() {
+export const useFetchCategories = () => {
   const [categories, setCategories] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -22,4 +22,4 @@ export function useFetchCategories() {
     error,
     loading,
   };
-}
+};
