@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
   # For the execution of the project
 
-  You must install the dependencies using the npm install commands and for the execution of the project locally run the npm run dev command.
+  You must install the dependencies using the `npm install` commands and for the execution of the project locally run the `npm run dev` command.
