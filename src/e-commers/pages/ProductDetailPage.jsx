@@ -1,10 +1,18 @@
 import { useParams } from "react-router";
 import { useGetProductId } from "../../services/useGetProductId";
 import { Loading } from "../../ui/components/Loading";
+import { toast } from "react-toastify";
+import { useCart } from "../../context/ContextCart";
 
 export function ProductDetailPage() {
   const { id } = useParams();
   const { productId, loading } = useGetProductId(id);
+  const { dispatch } = useCart();
+
+  const handleAddToCart = () => {
+    dispatch({ type: 'ADD_TO_CART', payload: productId })
+    toast.success(`${productId.title} added to cart`);
+  }
 
   if (loading) {
     return (
@@ -33,7 +41,10 @@ export function ProductDetailPage() {
             <span className="text-3xl font-bold text-gray-900 dark:text-black">
                 $ {productId?.price}
             </span>
-            <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button 
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={handleAddToCart}
+            >
                 Add cart
             </button>
           </div>
